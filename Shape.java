@@ -1,3 +1,3 @@
 public interface Shape {
-    void drawWith(Tool tool);
+    String drawWith(Tool tool);
 }

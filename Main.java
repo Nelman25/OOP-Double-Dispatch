@@ -1,20 +1,30 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Main {
+public class Main implements ActionListener {
+    Shape circle = new Circle();
+    Shape square = new Square();
+    Tool pen = new Pen();
+    Tool brush = new Brush();
+
+    Circle c = new Circle();
+    Square s = new Square();
+    Pen p = new Pen();
+    Brush b = new Brush();
+
+    static JFrame frame = new JFrame("Simple Whiteboard");
+    static String[] shapesOptions = {"Circle","Square"};
+    static String[] toolsOptions = {"Pen","Brush"};
+    static JComboBox shapes = new JComboBox(shapesOptions);
+    static JComboBox tools = new JComboBox(toolsOptions);
+    static JLabel text = new JLabel();
+    static ImageIcon logoImage = new ImageIcon("C:\\Users\\Jonel Villaver\\Downloads\\appLogo.png");
+    static JLabel title = new JLabel("Shape Canvas");
+
     public static void main(String[] args) {
-        Shape circle = new Circle();
-        Shape square = new Square();
-        Tool pen = new Pen();
-        Tool brush = new Brush();
-        JFrame frame = new JFrame("Simple Whiteboard");
-        String shapesOptions[] = {"Circle","Square"};
-        String toolsOptions[] = {"Pen","Brush"};
-        JComboBox shapes = new JComboBox(shapesOptions);
-        JComboBox tools = new JComboBox(toolsOptions);
-        JTextArea text = new JTextArea();
-        ImageIcon logoImage = new ImageIcon("C:\\Users\\Jonel Villaver\\Downloads\\appLogo.png");
-        JLabel title = new JLabel("Shape Canvas");
+
         WhiteBoard whiteBoard = new WhiteBoard();
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -38,15 +48,20 @@ public class Main {
 
         text.setBounds(550,150,350,35);
         text.setFont(new Font("Poppins", Font.BOLD, 20));
-        text.setEditable(false);
 
         frame.add(shapes);
         frame.add(tools);
         frame.add(title);
         frame.add(text);
         frame.setVisible(true);
+    }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource()==shapes && e.getSource()==tools) {
+            if (shapes.getSelectedItem().equals("Circle") && tools.getSelectedItem().equals("Pen")) {
 
-
+            }
+        }
     }
 }
