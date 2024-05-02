@@ -1,19 +1,13 @@
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+public class Pen implements Tool {
 
-import static java.awt.SystemColor.text;
-
-public class Pen extends Main implements Tool, ActionListener {
+    MainFrame mainFrame = new MainFrame();
     @Override
     public void useOnCircle(Circle circle) {
+        mainFrame.text.setText("Using pen on Circle");
     }
 
     @Override
     public void useOnSquare(Square square) {
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
+        mainFrame.text.setText("Using pen on Square");
     }
 }
