@@ -17,7 +17,7 @@ public class MainFrame implements ActionListener {
      String[] shapesOptions = {"Circle","Square"};
      String[] toolsOptions = {"Pen","Brush"};
      JComboBox shapes = new JComboBox(shapesOptions);
-     JLabel text = new JLabel("Using pen on ______");
+     static JLabel text = new JLabel("Using pen on ______");
      ImageIcon logoImage = new ImageIcon("C:\\Users\\Jonel Villaver\\Downloads\\appLogo.png");
      JLabel title = new JLabel("Shape Canvas");
 
@@ -44,6 +44,7 @@ public class MainFrame implements ActionListener {
         shapes.addActionListener(this);
 
         text.setBounds(550,150,350,35);
+        text.setFont(new Font("Poppins", Font.BOLD, 30));
         text.setOpaque(true);
         text.setVisible(true);
 
