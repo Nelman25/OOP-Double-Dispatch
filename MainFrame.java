@@ -1,3 +1,4 @@
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -7,23 +8,24 @@ public class MainFrame implements ActionListener {
     Shape circle = new Circle();
     Shape square = new Square();
     Tool pen = new Pen();
-
-    Circle c = new Circle();
-    Square s = new Square();
-    Brush b = new Brush();
     static Pen p;
 
-     JFrame frame = new JFrame("Simple Whiteboard");
-     String[] shapesOptions = {"Circle","Square"};
-     String[] toolsOptions = {"Pen","Brush"};
-     JComboBox shapes = new JComboBox(shapesOptions);
-     static JLabel text = new JLabel("Using pen on ______");
-     ImageIcon logoImage = new ImageIcon("C:\\Users\\Jonel Villaver\\Downloads\\appLogo.png");
-     JLabel title = new JLabel("Shape Canvas");
+    WhiteBoard whiteBoard;
+
+    JFrame frame = new JFrame("Simple Whiteboard");
+    static String[] shapesOptions = {"Default", "Circle" ,"Square"};
+    String[] toolsOptions = {"Pen","Brush"};
+    static JComboBox shapes = new JComboBox(shapesOptions);
+    static JLabel text = new JLabel("Using pen on ______");
+    ImageIcon logoImage = new ImageIcon("C:\\Users\\Jonel Villaver\\Downloads\\appLogo.png");
+    JLabel title = new JLabel("Shape Canvas");
+
+    ImageIcon CIRCLE = new ImageIcon("C:\\Users\\Jonel Villaver\\Downloads\\circle (2).png");
+    ImageIcon SQUARE = new ImageIcon("C:\\Users\\Jonel Villaver\\Downloads\\square.png");
 
     MainFrame(){
 
-        WhiteBoard whiteBoard = new WhiteBoard();
+        whiteBoard = new WhiteBoard();
         p = new Pen();
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -32,9 +34,9 @@ public class MainFrame implements ActionListener {
         frame.setLayout(null);
         frame.setSize(1250, 900);
 
-        whiteBoard.setBorder(BorderFactory.createLineBorder(new Color(122, 122, 122),5));
+        whiteBoard.setBorder(BorderFactory.createLineBorder(Color.black,5));
 
-        title.setBounds(25,30,400,50);
+        title.setBounds(30,50,400,50);
         title.setFont(new Font("Poppins", Font.BOLD, 35));
         title.setIconTextGap(20);
         title.setIcon(logoImage);
@@ -48,6 +50,7 @@ public class MainFrame implements ActionListener {
         text.setOpaque(true);
         text.setVisible(true);
 
+        frame.setResizable(false);
         frame.add(shapes);
         frame.add(title);
         frame.add(text);
@@ -57,11 +60,20 @@ public class MainFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==shapes) {
-            if(shapes.getSelectedItem().equals("Circle")){
+
+            if(shapes.getSelectedItem().equals("Default")){
+                text.setText("Using pen on ______");
+                whiteBoard.Imagelabel.setIcon(null);
+            }
+
+            else if(shapes.getSelectedItem().equals("Circle")){
                 circle.drawWith(pen);
+                whiteBoard.Imagelabel.setIcon(CIRCLE);
+
             }
             else if(shapes.getSelectedItem().equals("Square")){
                 square.drawWith(pen);
+                whiteBoard.Imagelabel.setIcon(SQUARE);
             }
         }
     }
